@@ -18,7 +18,7 @@ public class TodoResource {
 
     @GetMapping("/")
     public String testHeroku() {
-        return "Testing method for Herkou!";
+        return "Todo app API here!";
     }
 
     @GetMapping("/users/{username}/todos")
