@@ -12,11 +12,12 @@ public class TodoHardcodedService {
     private static long idCounter = 0;
 
     static {
-        todosList.add(new Todo(++idCounter, "shubham2307", "Find a job", new Date(), false));
-        todosList.add(new Todo(++idCounter, "shubham2307", "Learn angular", new Date(), false));
+        todosList.add(new Todo(++idCounter, "shubham2307", "Get a job", new Date(), false));
+        todosList.add(new Todo(++idCounter, "shubham2307", "Learn Angular", new Date(), false));
+        todosList.add(new Todo(++idCounter, "shubham2307", "Start going to Gym", new Date(), false));
         todosList.add(new Todo(++idCounter, "shubham2307", "Learn web development", new Date(), false));
-        todosList.add(new Todo(++idCounter, "shubham2307", "Buy Groceries", new Date(), false));
-        todosList.add(new Todo(++idCounter, "shubham2307", "Fly a spacecship ;)", new Date(), false));
+        todosList.add(new Todo(++idCounter, "shubham2307", "Save the World", new Date(), false));
+        todosList.add(new Todo(++idCounter, "shubham2307", "Fly a spaceship ;)", new Date(), false));
     }
 
     public List<Todo> findAll() {
