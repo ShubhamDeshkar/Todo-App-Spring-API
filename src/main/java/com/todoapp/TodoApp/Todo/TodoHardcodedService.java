@@ -18,6 +18,8 @@ public class TodoHardcodedService {
         todosList.add(new Todo(++idCounter, "shubham2307", "Learn web development", new Date(), false));
         todosList.add(new Todo(++idCounter, "shubham2307", "Save the World", new Date(), false));
         todosList.add(new Todo(++idCounter, "shubham2307", "Fly a spaceship ;)", new Date(), false));
+        todosList.add(new Todo(++idCounter, "shubham2307", "Go to Mars", new Date(), false));
+        todosList.add(new Todo(++idCounter, "shubham2307", "Make a stop at Moon", new Date(), false));
     }
 
     public List<Todo> findAll() {
