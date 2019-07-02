@@ -37,7 +37,7 @@ public class TodoJPAResource {
     }
 
     @PutMapping("/{username}/todos/{id}")
-    public ResponseEntity<Todo> saveTodo(@PathVariable String username, @PathVariable Long id, @RequestBody Todo todo) {
+    public ResponseEntity<Todo> updateTodo(@PathVariable String username, @PathVariable Long id, @RequestBody Todo todo) {
         Todo updatedTodo = service.saveTodo(todo);
         return new ResponseEntity<>(updatedTodo, HttpStatus.OK);
     }
