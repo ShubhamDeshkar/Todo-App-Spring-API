@@ -17,5 +17,7 @@ public class SpringSecurityConfigBasicAuth extends WebSecurityConfigurerAdapter 
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .anyRequest().authenticated()
                 .and().httpBasic();
+
+        http.headers().frameOptions().disable();
     }
 }
