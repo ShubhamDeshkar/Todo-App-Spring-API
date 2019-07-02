@@ -18,6 +18,7 @@ public class SpringSecurityConfigBasicAuth extends WebSecurityConfigurerAdapter 
                 .anyRequest().authenticated()
                 .and().httpBasic();
 
+        // to use H2 console
         http.headers().frameOptions().disable();
     }
 }
