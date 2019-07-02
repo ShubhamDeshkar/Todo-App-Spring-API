@@ -15,9 +15,6 @@ import java.util.List;
 public class TodoJPAResource {
 
     @Autowired
-    private TodoHardcodedService service;
-
-    @Autowired
     private TodoJPARepository todoJPARepository;
 
     @GetMapping("/{username}/todos")
@@ -38,12 +35,14 @@ public class TodoJPAResource {
 
     @PutMapping("/{username}/todos/{id}")
     public ResponseEntity<Todo> updateTodo(@PathVariable String username, @PathVariable Long id, @RequestBody Todo todo) {
-        Todo updatedTodo = service.saveTodo(todo);
+        todo.setUsername(username);
+        Todo updatedTodo = todoJPARepository.save(todo);
         return new ResponseEntity<>(updatedTodo, HttpStatus.OK);
     }
 
     @PostMapping("/jpa/users/{username}/todos")
     public ResponseEntity<Void> createTodo(@PathVariable String username, @RequestBody Todo todo) {
+        todo.setUsername(username);
         Todo createdTodo = todoJPARepository.save(todo);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdTodo.getId()).toUri();
