@@ -10,6 +10,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
+@RequestMapping("/jpa/users")
 @CrossOrigin(origins = {"http://localhost:4200", "https://quirky-morse-bbfee4.netlify.com"})
 public class TodoJPAResource {
 
@@ -19,18 +20,12 @@ public class TodoJPAResource {
     @Autowired
     private TodoJPARepository todoJPARepository;
 
-    @GetMapping("/")
-    public String forHeroku() {
-        return "Todo app API here!";
-    }
-
-    @GetMapping("/jpa/users/{username}/todos")
+    @GetMapping("/{username}/todos")
     public List<Todo> getAllTodos(@PathVariable String username) {
         return todoJPARepository.findByUsername(username);
-//        return service.findAll();
     }
 
-    @DeleteMapping("/jpa/users/{username}/todos/{id}")
+    @DeleteMapping("/{username}/todos/{id}")
     public ResponseEntity<Void> deleteTodo(@PathVariable String username, @PathVariable Long id) {
         Todo deletedTodo = service.deleteTodo(id);
         if (deletedTodo != null)
@@ -38,13 +33,12 @@ public class TodoJPAResource {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/jpa/users/{username}/todos/{id}")
+    @GetMapping("/{username}/todos/{id}")
     public Todo getTodo(@PathVariable String username, @PathVariable Long id) {
         return todoJPARepository.findById(id).get();
-//        return service.findById(id);
     }
 
-    @PutMapping("/jpa/users/{username}/todos/{id}")
+    @PutMapping("/{username}/todos/{id}")
     public ResponseEntity<Todo> saveTodo(@PathVariable String username, @PathVariable Long id, @RequestBody Todo todo) {
         Todo updatedTodo = service.saveTodo(todo);
         return new ResponseEntity<>(updatedTodo, HttpStatus.OK);
