@@ -27,10 +27,8 @@ public class TodoJPAResource {
 
     @DeleteMapping("/{username}/todos/{id}")
     public ResponseEntity<Void> deleteTodo(@PathVariable String username, @PathVariable Long id) {
-        Todo deletedTodo = service.deleteTodo(id);
-        if (deletedTodo != null)
-            return ResponseEntity.noContent().build();
-        return ResponseEntity.notFound().build();
+        todoJPARepository.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{username}/todos/{id}")
@@ -45,8 +43,8 @@ public class TodoJPAResource {
     }
 
     @PostMapping("/jpa/users/{username}/todos")
-    public ResponseEntity<Void> saveTodo(@PathVariable String username, @RequestBody Todo todo) {
-        Todo createdTodo = service.saveTodo(todo);
+    public ResponseEntity<Void> createTodo(@PathVariable String username, @RequestBody Todo todo) {
+        Todo createdTodo = todoJPARepository.save(todo);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdTodo.getId()).toUri();
         return ResponseEntity.created(uri).build();
