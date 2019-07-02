@@ -25,5 +25,5 @@ public class UserJPAResource {
         return ResponseEntity.created(uri).build();
     }
 
-    
+
 }
