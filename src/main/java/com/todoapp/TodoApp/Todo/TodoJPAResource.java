@@ -17,6 +17,11 @@ public class TodoJPAResource {
     @Autowired
     private TodoJPARepository todoJPARepository;
 
+    @GetMapping("/")
+    public String init() {
+        return "Todo API here hor Heroku";
+    }
+
     @GetMapping("/{username}/todos")
     public List<Todo> getAllTodos(@PathVariable String username) {
         return todoJPARepository.findByUsername(username);
