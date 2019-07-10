@@ -17,6 +17,7 @@ public class UserJPAResource {
 
     @PostMapping("/new")
     public ResponseEntity<Void> createUser(@RequestBody User newUser) {
+        System.out.println("New User Created");
         User createdUser = userJPARepository.save(newUser);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdUser.getId()).toUri();
         return ResponseEntity.created(uri).build();
